@@ -1,0 +1,40 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container card-panel z-depth-3" novalidate>
+
+  <!-- Username Field -->
+  <div class="input-field">
+    <i class="material-icons prefix">account_circle</i>
+    <input id="username" type="text" formControlName="username" class="validate">
+    <label for="username">Username</label>
+
+    @if (loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['required']) {
+      <span class="helper-text red-text">Please enter your username</span>
+    }
+  </div>
+
+  <!-- Password Field -->
+  <div class="input-field">
+    <i class="material-icons prefix">lock</i>
+    <input id="password" type="password" formControlName="password" class="validate">
+    <label for="password">Password</label>
+
+    @if (loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']) {
+      <span class="helper-text red-text">Please enter your password</span>
+    }
+  </div>
+
+    @if(authError) {
+      <div class="red-text center-align" style="margin-top: 10px;">
+        <i class="material-icons left">error</i>
+        <strong>Username or password are invalid</strong>
+      </div>
+    }
+
+  <!-- Submit Button -->
+  <div class="center-align">
+    <button type="submit" class="btn waves-effect waves-light" [disabled]="loginForm.invalid">
+      Login
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
+
+</form>

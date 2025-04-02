@@ -1,0 +1,26 @@
+.login-form {
+  max-width: 400px;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 10px;
+
+  .input-field {
+    label {
+      font-size: 1.1rem;
+    }
+
+    input {
+      border-bottom: 2px solid #26a69a !important;
+    }
+
+    .helper-text {
+      font-size: 0.9rem;
+    }
+  }
+
+  button {
+    width: 100%;
+    font-size: 1.1rem;
+    border-radius: 5px;
+  }
+}
