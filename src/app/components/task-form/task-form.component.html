@@ -1,0 +1,14 @@
+<br>
+<h3>Create Task </h3>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" novalidate>
+  <label for="title">Title</label>
+  <input id="title" formControlName="title" type="text" required>
+
+  <label for="description">Description</label>
+  <textarea id="description" formControlName="description" required></textarea>
+
+  <label for="duration">Duration (Hours)</label>
+  <input id="duration" formControlName="duration" type="number" required>
+
+  <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+</form>

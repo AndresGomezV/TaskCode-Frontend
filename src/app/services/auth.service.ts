@@ -43,4 +43,13 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!this.getToken(); //Devuelve true si hay un token
   }
+
+  getUserRole(): string | null {
+    const token = this.getToken();
+
+    if (!token) return null;
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.role || null;
+  }
 }

@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  private authService = inject(AuthService);
+  private authService: AuthService = inject(AuthService);
   formBuilder: FormBuilder = inject(FormBuilder);
   authError: boolean = false;
-  private router = inject(Router)
+  private router: Router = inject(Router)
 
   loginForm = this.formBuilder.group({
     username: ['', [Validators.required]],
@@ -32,7 +32,7 @@ export class LoginComponent {
       next: response => {
         localStorage.setItem('token', response.token);
         this.authError = false;
-        //Redirigir al usuario a otra página
+        this.router.navigate(['/dashboard']);
 
       },
       error: () => {
