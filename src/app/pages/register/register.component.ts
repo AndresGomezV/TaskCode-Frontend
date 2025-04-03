@@ -16,6 +16,7 @@ export class RegisterComponent implements AfterViewInit {
   private authService = inject(AuthService);
   formBuilder: FormBuilder = inject(FormBuilder);
   authError: boolean = false;
+  userExists: boolean = false;
 
   registerForm = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(6)]],
@@ -34,7 +35,7 @@ export class RegisterComponent implements AfterViewInit {
     const { username, password, role } = this.registerForm.value;
 
     if(this.authService.userExists(username!)) {
-      this.authError = true;
+      this.userExists = true;
     }
 
     this.authService.register(username!, password!, role!).subscribe({

@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        @if (authError) {
+        @if (userExists) {
           <div class="red-text center-align error-box">
             <i class="material-icons left">error</i>
             <strong>Username already in use</strong>
@@ -66,7 +66,7 @@
 
         <!-- Extra Actions -->
         <div class="center-align extra-actions">
-          <a href="#" class="deep-purple-text text-darken-3">Already have an account? Login</a>
+          <a href="/login" class="deep-purple-text text-darken-3">Already have an account? Login</a>
         </div>
 
       </div>
