@@ -1,0 +1,75 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="container">
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card-panel z-depth-4 login-card">
+        <h4 class="center-align deep-purple-text text-darken-3">Register</h4>
+
+        <!-- Username Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">account_circle</i>
+          <input id="username" type="text" formControlName="username" class="validate">
+          <label for="username">Username</label>
+
+          @if (registerForm.get('username')?.touched && registerForm.get('username')?.errors?.['required']) {
+            <span class="helper-text red-text">Username is required</span>
+          }
+          @if (registerForm.get('username')?.touched && registerForm.get('username')?.errors?.['minlength']) {
+            <span class="helper-text red-text">Username must be at least 6 characters long</span>
+          }
+        </div>
+
+        <!-- Password Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">lock</i>
+          <input id="password" type="password" formControlName="password" class="validate">
+          <label for="password">Password</label>
+
+          @if (registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required']) {
+            <span class="helper-text red-text">Password is required</span>
+          }
+          @else if (registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['minlength']) {
+            <span class="helper-text red-text">Password must be at least 8 characters long</span>
+          }
+          @else if (registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['pattern']) {
+            <span class="helper-text red-text">Must include uppercase, lowercase, number, and special character</span>
+          }
+        </div>
+
+        <!-- Role Selection -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">group</i>
+          <div class="select-wrapper">
+            <select formControlName="role" id="role" class="browser-default select-role">
+              <option value="" disabled selected>Select role</option>
+              <option value="USER">User</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+          </div>
+        </div>
+
+        @if (authError) {
+          <div class="red-text center-align error-box">
+            <i class="material-icons left">error</i>
+            <strong>Username already in use</strong>
+          </div>
+        }
+
+        <br>
+
+        <!-- Submit Button -->
+        <div class="center-align">
+          <button type="submit" class="btn waves-effect waves-light login-btn" [disabled]="registerForm.invalid">
+            Register
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+
+        <!-- Extra Actions -->
+        <div class="center-align extra-actions">
+          <a href="#" class="deep-purple-text text-darken-3">Already have an account? Login</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,40 +1,57 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container card-panel z-depth-3" novalidate>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container">
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card-panel z-depth-4 login-card">
+        <h4 class="center-align deep-purple-text text-darken-3">Login</h4>
 
-  <!-- Username Field -->
-  <div class="input-field">
-    <i class="material-icons prefix">account_circle</i>
-    <input id="username" type="text" formControlName="username" class="validate">
-    <label for="username">Username</label>
+        <!-- Username Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">account_circle</i>
+          <input id="username" type="text" formControlName="username" class="validate">
+          <label for="username">Username</label>
 
-    @if (loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['required']) {
-      <span class="helper-text red-text">Please enter your username</span>
-    }
-  </div>
+          @if (loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['required']) {
+            <span class="helper-text red-text">Please enter your username</span>
+          }
+        </div>
 
-  <!-- Password Field -->
-  <div class="input-field">
-    <i class="material-icons prefix">lock</i>
-    <input id="password" type="password" formControlName="password" class="validate">
-    <label for="password">Password</label>
+        <!-- Password Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">lock</i>
+          <input id="password" type="password" formControlName="password" class="validate">
+          <label for="password">Password</label>
 
-    @if (loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']) {
-      <span class="helper-text red-text">Please enter your password</span>
-    }
-  </div>
+          @if (loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']) {
+            <span class="helper-text red-text">Please enter your password</span>
+          }
+        </div>
 
-    @if(authError) {
-      <div class="red-text center-align" style="margin-top: 10px;">
-        <i class="material-icons left">error</i>
-        <strong>Username or password are invalid</strong>
+        <!-- Error Message -->
+        @if (authError) {
+          <div class="red-text center-align error-box">
+            <i class="material-icons left">error</i>
+            <strong>Username or password are invalid</strong>
+          </div>
+        }
+
+        <br>
+
+        <!-- Submit Button -->
+        <div class="center-align">
+          <button type="submit" class="btn waves-effect waves-light login-btn" [disabled]="loginForm.invalid">
+            Login
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+
+        <!-- Extra Actions -->
+        <div class="center-align extra-actions">
+          <a href="#" class="deep-purple-text text-darken-3">Forgot password?</a>
+          <span class="divider">|</span>
+          <a href="#" class="deep-purple-text text-darken-3">Create account</a>
+        </div>
+
       </div>
-    }
-
-  <!-- Submit Button -->
-  <div class="center-align">
-    <button type="submit" class="btn waves-effect waves-light" [disabled]="loginForm.invalid">
-      Login
-      <i class="material-icons right">send</i>
-    </button>
+    </div>
   </div>
-
 </form>

@@ -6,7 +6,6 @@ body {
   align-items: center;
 }
 
-
 .login-card {
   padding: 30px;
   border-radius: 12px;
@@ -48,55 +47,24 @@ body {
   color: #aaa;
 }
 
-@media screen and (max-width: 1600px) { /* Pantallas gigantes */
-  .login-card {
-    max-width: 95%;
-  }
-}
-
-@media screen and (max-width: 1400px) { /* Laptops grandes */
-  .login-card {
-    max-width: 90%;
-  }
-}
-
-@media screen and (max-width: 1200px) { /* Laptops estándar */
-  .login-card {
-    max-width: 95%;
-    padding: 70px;
-  }
-}
-
-@media screen and (max-width: 992px) { /* Tablets grandes */
-  .login-card {
-    max-width: 100%;
-    padding: 60px;
-  }
-}
-
-@media screen and (max-width: 768px) { /* Tablets pequeñas */
-  .login-card {
-    padding: 50px;
-  }
-}
-
-@media screen and (max-width: 600px) { /* Smartphones */
-  .login-card {
-    padding: 40px;
-  }
+.select-role {
+  border-radius: 8px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 16px;
 }
 
 input.valid {
-  border-bottom: 2px solid #6a11cb !important; /* Color de borde */
-  box-shadow: 0 1px 0 0 #6a11cb !important; /* Color de la sombra */
+  border-bottom: 2px solid #6a11cb !important;
+  box-shadow: 0 1px 0 0 #6a11cb !important;
 }
 
-/* Cambiar el color rojo de error */
 input.invalid {
   border-bottom: 2px solid red !important;
   box-shadow: 0 1px 0 0 red !important;
 }
-
 
 @keyframes fadeIn {
   from {
