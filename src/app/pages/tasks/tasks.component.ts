@@ -3,6 +3,7 @@ import {TaskService} from '../../services/task.service';
 import {Task} from "../../model/task.model";
 import {RouterOutlet} from '@angular/router';
 import {SidebarComponent} from '../../components/sidebar/sidebar.component';
+import {User} from '../../model/user.model';
 
 @Component({
   selector: 'app-tasks',
@@ -17,10 +18,14 @@ export class TasksComponent {
  private taskService = inject(TaskService)
 
   tasks: Task[] = []
-  selectedStatus: string = '';
+  users: User[] = [];
+  selectedUserId: number | undefined;
+  selectedStatus: string | undefined;
+  statuses = ['PENDING', 'ACCEPTED', 'REJECTED'];
+
 
   getTasks(userId?: number, status?: string) {
-   this.taskService.getTasks().subscribe({
+   this.taskService.getTasks({userId, status}).subscribe({
      next: tasks => {
        this.tasks = tasks
      },
@@ -31,7 +36,7 @@ export class TasksComponent {
    })
   }
 
-
+  getUsers()
 
 
 }
