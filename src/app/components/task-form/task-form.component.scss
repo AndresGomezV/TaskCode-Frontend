@@ -1,63 +1,61 @@
+
 form {
-  background: transparent;
-  padding: 20px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  box-sizing: border-box;
+  padding: 20px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 30px !important;
+  width: 80% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
 
 }
 
 h3 {
-  text-align: center;
-  color: #512da8;
-  font-size: 22px;
-  margin-bottom: 10px;
+  text-align: center !important;
+  color: #512da8 !important;
+  font-size: 22px !important;
+  margin-bottom: 10px !important;
 }
 
 label {
-  font-weight: bold;
-  color: #333;
+
+  color: rgba(51, 51, 51, 0.63) !important;
 }
 
 input, textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease-in-out;
+  width: 90% !important;
+
+  font-size: 16px !important;
+  transition: all 0.3s ease-in-out !important;
 }
 
 input:focus, textarea:focus {
-  border-color: #512da8;
-  outline: none;
-  box-shadow: 0 0 8px rgba(103, 58, 183, 0.3);
+
+  border-bottom: 2px solid #6a11cb !important;
+  box-shadow: 0 1px 0 0 #6a11cb !important;
 }
 
 button {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  border: none;
-  color: white;
-  padding: 12px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
+  border: none !important;
+  color: white !important;
+  padding: 12px !important;
+  border-radius: 50px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease-in-out !important;
 }
 
 button:hover {
-  background: linear-gradient(135deg, #512da8, #311b92);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #2575fc, #6a11cb) !important;
 }
 
 button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  transform: none;
+  background: #ccc !important;
+  cursor: not-allowed !important;
+  transform: none !important;
 }
+

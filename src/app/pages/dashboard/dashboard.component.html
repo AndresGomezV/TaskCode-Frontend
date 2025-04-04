@@ -1,14 +1,15 @@
-<div>
-  <h2>Dashboard</h2>
-<div>
+<div class="dashboard">
+  <h3>Dashboard</h3>
+  <div>
     @if (userRole === 'USER') {
       <app-calendar (dateSelected)="onDateSelected($event)"></app-calendar>
     }
+  </div>
+  <div class="admin-dashboard">
+  @if (userRole === 'ADMIN') {
+    <app-admin-dashboard></app-admin-dashboard>
+  }
+  </div>
 </div>
 
-<!--  @if (userRole === 'ADMIN') {-->
-<!--    <app-admin-dashboard></app-admin-dashboard>-->
 
-<!--  }-->
-
-</div>

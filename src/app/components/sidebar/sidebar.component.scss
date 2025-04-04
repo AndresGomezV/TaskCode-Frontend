@@ -1,0 +1,79 @@
+/* Aseguramos que el sidebar ocupe toda la altura de la pantalla */
+html, body {
+  height: 100% !important;
+  margin: 0 !important; /* Eliminar márgenes por defecto */
+}
+
+.card-panel.z-depth-4.sidebar-card {
+  box-shadow: none !important;
+}
+
+
+.sidebar {
+  width: 250px !important; /* Ancho del sidebar */
+  background-color: #ffffff !important; /* Fondo blanco */
+  position: fixed !important; /* Fijo al lado izquierdo */
+  height: 100vh !important; /* Asegura que el sidebar ocupe toda la altura de la pantalla */
+  top: 0 !important;
+  left: 0 !important;
+  padding-top: 20px !important; /* Espaciado superior */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1) !important; /* Agregar sombra sutil */
+}
+
+.sidebar-card {
+  border-radius: 10px !important; /* Bordes redondeados */
+  padding: 20px !important; /* Espaciado interno */
+}
+
+.sidebar-list {
+  padding: 0 !important;
+  list-style-type: none !important; /* Sin puntos en la lista */
+}
+
+
+
+.sidebar-list li {
+  margin-bottom: 15px !important; /* Espaciado entre los elementos */
+}
+
+.sidebar-list li a {
+  font-size: 16px !important;
+  text-transform: uppercase !important; /* Letras mayúsculas */
+  font-weight: 500 !important; /* Peso de la fuente */
+  color: #000000 !important;
+  display: flex !important;
+  padding: 10px !important;
+  border-radius: 5px !important;
+  transition: background-color 0.3s ease, color 0.3s ease !important; /* Transición suave */
+  align-items: center !important;
+  gap: 10px !important; /* Espacio entre el icono y el texto */
+}
+
+.sidebar-list li a:hover i {
+  color: #ffffff !important; /* o el color que quieras */
+}
+
+.sidebar-list li a.active {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+.sidebar-list li a.active i {
+  color: inherit !important;
+}
+
+.sidebar-list li a:hover {
+  background-color: #4a148c !important; /* Color de fondo al pasar el ratón */
+  color: #ffffff !important; /* Color de texto blanco */
+}
+
+.sidebar-list li a.red-text {
+  color: #d32f2f !important; /* Color rojo para logout */
+}
+
+.sidebar-list li a.red-text:hover {
+  background-color: #f44336 !important; /* Fondo rojo cuando se pasa el ratón */
+  color: #ffffff !important; /* Texto blanco en hover */
+}
+
+

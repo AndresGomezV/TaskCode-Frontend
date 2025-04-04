@@ -2,7 +2,7 @@ import {Component, inject, Input} from '@angular/core';
 import {ReactiveFormsModule, FormBuilder, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import {TaskService} from '../../services/task.service';
-import {TaskRequest} from '../../model/task.model';
+import {TaskRequest} from '../../model/task-request.model';
 
 @Component({
   selector: 'app-task-form',

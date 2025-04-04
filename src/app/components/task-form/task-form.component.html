@@ -1,14 +1,31 @@
 <br>
-<h3>Create Task </h3>
-<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" novalidate>
-  <label for="title">Title</label>
-  <input id="title" formControlName="title" type="text" required>
+<h3>Create a Task</h3>
 
-  <label for="description">Description</label>
-  <textarea id="description" formControlName="description" required></textarea>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="container">
 
-  <label for="duration">Duration (Hours)</label>
-  <input id="duration" formControlName="duration" type="number" required>
+  <!-- Title -->
+  <div class="input-field">
+    <i class="material-icons prefix deep-purple-text text-darken-2">text_fields</i>
+    <input id="title" formControlName="title" type="text" class="validate" required>
+    <label for="title">Title</label>
+  </div>
 
-  <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+  <!-- Description -->
+  <div class="input-field">
+    <i class="material-icons prefix deep-purple-text text-darken-2">notes</i>
+    <textarea id="description" formControlName="description" class="materialize-textarea validate" required></textarea>
+    <label for="description">Description</label>
+  </div>
+
+  <!-- Duration -->
+  <div class="input-field">
+    <i class="material-icons prefix deep-purple-text text-darken-2">schedule</i>
+    <input id="duration" formControlName="duration" type="number" class="validate" required>
+    <label for="duration">Duration (Hours)</label>
+  </div>
+
+    <button type="submit"  [disabled]="taskForm.invalid">
+      Add Task
+    </button>
 </form>
+

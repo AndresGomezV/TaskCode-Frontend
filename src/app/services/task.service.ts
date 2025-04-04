@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {TaskRequest} from "../model/task.model";
+import {TaskRequest} from "../model/task-request.model";
+import {Task} from "../model/task.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,20 @@ export class TaskService {
     });
 
     return this.http.post<any>(this.apiUrl, task, {headers});
+  }
+
+  getTasks(filters?: { userId?: number; status?: string }): Observable<Task[]> {
+    let params = new HttpParams();
+
+    if (filters?.userId !== undefined) {
+      params = params.set('userId', filters.userId.toString());
+    }
+
+    if (filters?.status !== undefined) {
+      params = params.set('status', filters.status);
+    }
+
+    return this.http.get<Task[]>(`${this.apiUrl}/`, { params });
   }
 }
 

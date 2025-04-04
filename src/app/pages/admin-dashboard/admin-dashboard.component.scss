@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.dashboard {
+  display: flex; /* Usamos flexbox para organizar el layout */
+  height: 100%; /* Ocupa toda la altura disponible */
+}
+
+
+app-sidebar {
+  width: 250px; /* El sidebar ocupa 250px de ancho */
+  height: 100vh; /* 100vh hace que el sidebar ocupe toda la altura de la pantalla */
+  position: fixed; /* Fija el sidebar en el lado izquierdo */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Para asegurarse de que el sidebar quede encima del contenido */
+}
+
+.dashboard-content {
+  flex-grow: 1; /* El contenido principal ocupa el resto del espacio */
+  padding: 20px; /* Espaciado alrededor del contenido */
+  margin-left: 250px; /* Deja espacio para el sidebar */
+  width: calc(100% - 250px); /* Ajusta el contenido al lado derecho */
+  min-height: 100vh; /* Asegura que el contenido ocupe toda la altura */
+}
