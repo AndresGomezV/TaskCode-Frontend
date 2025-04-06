@@ -75,45 +75,44 @@
 
                 <div class="task-info">
                   <p>{{ task.description }}</p>
-                  <p>⏱ Duration: {{ task.duration }}h</p>
+                  <div class="task-bottom-row">
+                    <div class="task-duration">⏱ Duration: {{ task.duration }}h</div>
+
+                    @switch (task.status) {
+                      @case ('PENDING') {
+                        <div class="action-buttons">
+                          <button title="Accept task" class="btn-accept btn-small white-text"
+                                  (click)="updateTaskStatus(task.id, 'ACCEPTED')">
+                            <i class="material-icons">check</i>
+                          </button>
+
+                          <button title="Reject task" class="btn-reject btn-small white-text"
+                                  (click)="updateTaskStatus(task.id, 'REJECTED')">
+                            <i class="material-icons">close</i>
+                          </button>
+                        </div>
+                      }
+
+                      @case ('ACCEPTED') {
+                        <div class="action-buttons">
+                          <button title="Reject task" class="btn-reject btn-small white-text"
+                                  (click)="updateTaskStatus(task.id, 'REJECTED')">
+                            <i class="material-icons">close</i>
+                          </button>
+                        </div>
+                      }
+
+                      @case ('REJECTED') {
+                        <div class="action-buttons">
+                          <button title="Accept task" class="btn-accept btn-small white-text"
+                                  (click)="updateTaskStatus(task.id, 'ACCEPTED')">
+                            <i class="material-icons">check</i>
+                          </button>
+                        </div>
+                      }
+                    }
+                  </div>
                 </div>
-
-                @switch (task.status) {
-                  @case ('PENDING') {
-                    <div class="action-buttons right-align">
-                      <button title="Accept task" class=" btn-accept btn-small white-text"
-
-                              (click)="updateTaskStatus(task.id, 'ACCEPTED')">
-                        <i class="material-icons">check</i>
-                      </button>
-
-                      <button title="Reject task" class="btn-reject btn-small white-text"
-                              (click)="updateTaskStatus(task.id, 'REJECTED')">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </div>
-                  }
-
-                  @case ('ACCEPTED') {
-                    <div class="action-buttons right-align">
-                      <button title="Reject task" class="btn-reject btn-small white-text"
-
-                              (click)="updateTaskStatus(task.id, 'REJECTED')">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </div>
-                  }
-                  @case ('REJECTED') {
-                    <div class="action-buttons right-align">
-                      <button title="Accept task" class="btn-accept btn-small white-text"
-
-                              (click)="updateTaskStatus(task.id, 'ACCEPTED')">
-                        <i class="material-icons">check</i>
-                      </button>
-                    </div>
-                  }
-                }
-
               </div>
             }
 

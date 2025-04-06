@@ -14,12 +14,23 @@ body {
   box-sizing: border-box;
 }
 
-.card-panel {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  box-sizing: border-box;
+.total-card {
+  background-color: rgba(106, 17, 203, 0.09);
+  color: #4a148c;
+}
+.accepted-card {
+  background-color: #e8f5e9; /* verde claro */
+  color: #2e7d32;
+}
+
+.rejected-card {
+  background-color: #ffebee; /* rojo claro */
+  color: #c62828;
+}
+
+.pending-card {
+  background-color: #fff8e1; /* amarillo claro */
+  color: #f9a825;
 }
 
 .welcome-card {
@@ -38,28 +49,42 @@ body {
   font-size: 2rem;
   margin: 10px 0 0 0;
   font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.username:hover {
+  transform: scale(1.05);
 }
 
 .summary-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border-radius: 12px;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.summary-card h5 {
-  margin: 0;
-  color: #333;
-  font-weight: 500;
-  font-size: 1rem;
+.summary-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
-.summary-card h4 {
-  font-size: 2rem;
-  margin: 10px 0;
-  font-weight: bold;
-  color: #2575fc;
+.total-card {
+  background-color: rgba(106, 17, 203, 0.09);
+  color: #4a148c;
+}
+.accepted-card {
+  background-color: #e8f5e9; /* verde claro */
+  color: #2e7d32;
+}
+
+.rejected-card {
+  background-color: #ffebee; /* rojo claro */
+  color: #c62828;
+}
+
+.pending-card {
+  background-color: #fff8e1; /* amarillo claro */
+  color: #f9a825;
 }
 
 /* Estilo para la tarjeta de progreso */

@@ -2,26 +2,25 @@
   <div class="nav-wrapper white">
     <ul class="topbar-list">
       <li>
-        <a routerLink="/dashboard" routerLinkActive="active">
+        <a  title="Dashboard" routerLink="/dashboard" routerLinkActive="active">
           <i class="material-icons prefix deep-purple-text text-darken-2">home</i>
-          Home
         </a>
       </li>
 
       @if (userRole === 'USER') {
         <li>
-          <a routerLink="/calendar" routerLinkActive="active">
+          <a title="Calendar" routerLink="/calendar" routerLinkActive="active">
             <i class="material-icons prefix deep-purple-text text-darken-2">date_range</i>
-            Calendar
+
           </a>
         </li>
       }
 
       @if (userRole === 'ADMIN') {
       <li>
-        <a routerLink="/tasks" routerLinkActive="active">
+        <a title="Tasks" routerLink="/tasks" routerLinkActive="active">
           <i class="material-icons prefix deep-purple-text text-darken-2">assignment</i>
-          Tasks
+
         </a>
       </li>
       }
@@ -34,9 +33,8 @@
       <!--      </li>-->
 
       <li class="right-align">
-        <a (click)="logout()" class="red-text">
+        <a title="Logout" (click)="logout()" class="red-text">
           <i class="material-icons prefix red-text">logout</i>
-          Logout
         </a>
       </li>
     </ul>

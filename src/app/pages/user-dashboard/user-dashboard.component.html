@@ -5,36 +5,53 @@
 
 
 <div class="user-dashboard">
-  <div class="card-panel summary-card">
-    <h5>Total Tasks</h5>
-    <h4>{{ totalTasks }}</h4>
+  <!-- Total Tasks -->
+  <div class="col s12 m6 l3">
+    <div class="card-panel summary-card total-card">
+      <i class="material-icons icon large ">assignment</i>
+      <h5 class="deep-purple-text text-darken-3">Total Tasks</h5>
+      <h4>{{ totalTasks }}</h4>
+    </div>
   </div>
 
-  <div class="card-panel summary-card">
-    <h5>Accepted Tasks</h5>
-    <h4>{{ completedTasks }}</h4>
+  <!-- Accepted Tasks -->
+  <div class="col s12 m6 l3">
+    <div class="card-panel summary-card accepted-card">
+      <i class="material-icons icon large">check_circle</i>
+      <h5>Accepted</h5>
+      <h4>{{ completedTasks }}</h4>
+    </div>
   </div>
 
-  <div class="card-panel summary-card">
-    <h5>Pending Tasks</h5>
-    <h4>{{ pendingTasks }}</h4>
+  <!-- Rejected Tasks -->
+  <div class="col s12 m6 l3">
+    <div class="card-panel summary-card rejected-card">
+      <i class="material-icons icon large">cancel</i>
+      <h5>Rejected</h5>
+      <h4>{{ rejectedTasks }}</h4>
+    </div>
   </div>
 
-  <div class="card-panel summary-card">
-    <h5>Rejected Tasks</h5>
-    <h4>{{ rejectedTasks }}</h4>
+  <!-- Pending Tasks -->
+  <div class="col s12 m6 l3">
+    <div class="card-panel summary-card pending-card">
+      <i class="material-icons icon large">hourglass_empty</i>
+      <h5>Pending</h5>
+      <h4>{{ pendingTasks }}</h4>
+    </div>
   </div>
 
-  <div class="card-panel progress-card">
+  <div class=" card-panel summary-card progress-card">
     <h5>Task Completion Progress</h5>
     <progress class="progress-bar" value="{{ completedTasks }}" max="{{ totalTasks }}"></progress>
     <div class="progress-text">
       <span>{{ (completedTasks / totalTasks * 100) | number: '1.0-0' }}% Completed</span>
     </div>
   </div>
-
+  <div class="card-panel summary-card col s12 m6 l3">
   <div class="chart-card">
     <h5>Task Status Distribution</h5>
-    <canvas #taskChart width="400" height="400"></canvas>
+    <canvas #taskChart></canvas>
   </div>
 </div>
+  </div>

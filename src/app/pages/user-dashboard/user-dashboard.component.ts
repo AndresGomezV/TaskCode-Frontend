@@ -9,18 +9,14 @@ import {
   Legend,
   Title,
   DoughnutController,
-  PieController,
-  BarController,
-  CategoryScale, LinearScale, BarElement, LineController, PointElement, LineElement
+  CategoryScale, LinearScale, BarElement, PointElement, LineElement
 } from 'chart.js';
-import {SidebarComponent} from '../../components/sidebar/sidebar.component';
 
-
-Chart.register(ArcElement, Tooltip, Legend, Title, DoughnutController, PieController, BarController, CategoryScale, LinearScale, BarElement, LineController, PointElement, LineElement);
+Chart.register(ArcElement, Tooltip, Legend, Title, DoughnutController, CategoryScale, LinearScale, BarElement, PointElement, LineElement);
 
 @Component({
   selector: 'app-user-dashboard',
-  imports: [DecimalPipe, SidebarComponent],
+  imports: [DecimalPipe],
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.scss']
 })
@@ -37,7 +33,7 @@ export class UserDashboardComponent implements OnInit {
   rejectedTasks = 0;
   taskChart: any;
 
-  // Método para obtener tareas
+
   getTasks() {
     this.taskService.getTasks().subscribe({
       next: (tasks: Task[]) => {
@@ -51,7 +47,6 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
-  // Método para calcular estadísticas de tareas
   calculateTaskStats() {
     this.totalTasks = this.tasks.length;
     this.completedTasks = this.tasks.filter(task => task.status === 'ACCEPTED').length;
@@ -59,7 +54,6 @@ export class UserDashboardComponent implements OnInit {
     this.rejectedTasks = this.tasks.filter(task => task.status === 'REJECTED').length;
   }
 
-  // Método para crear el gráfico
   createTaskChart() {
     if (this.taskChart) {
 
@@ -75,7 +69,8 @@ export class UserDashboardComponent implements OnInit {
           datasets: [{
             data: [this.completedTasks, this.pendingTasks, this.rejectedTasks],
             backgroundColor: ['#4caf50', '#ff9800', '#f44336'],
-            hoverBackgroundColor: ['#388e3c', '#f57c00', '#d32f2f']
+            hoverBackgroundColor: ['#388e3c', '#f57c00', '#d32f2f'],
+            hoverOffset: 10
           }]
         },
         options: {
@@ -87,7 +82,7 @@ export class UserDashboardComponent implements OnInit {
             tooltip: {
               callbacks: {
                 label: function (tooltipItem) {
-                  return tooltipItem.label + ': ' + tooltipItem.raw + ' tasks';
+                  return " " + tooltipItem.raw + ' Tasks';
                 }
               }
             }
@@ -99,9 +94,8 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getTasks();
-    if (this.taskChartRef && !this.taskChart) {
       this.createTaskChart();
-    }
+
   }
 }
 

@@ -1,11 +1,24 @@
-import {Component, Output, EventEmitter, inject, TemplateRef, ViewChild, ChangeDetectorRef} from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  inject,
+  TemplateRef,
+  ViewChild,
+  ChangeDetectorRef,
+  OnInit, AfterViewInit
+} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarOptions } from '@fullcalendar/core';
-import {FullCalendarModule} from '@fullcalendar/angular';
+import {FullCalendarComponent, FullCalendarModule} from '@fullcalendar/angular';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {TaskFormComponent} from '../task-form/task-form.component';
 import {SidebarComponent} from '../sidebar/sidebar.component';
+import {TaskRequest} from '../../model/task-request.model';
+import { renderCustomEvent } from '../../utils/event-render.utils';
+import {TaskService} from '../../services/task.service';
+import { Task } from '../../model/task.model';
 
 @Component({
   selector: 'app-calendar',
@@ -17,22 +30,24 @@ import {SidebarComponent} from '../sidebar/sidebar.component';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit,AfterViewInit {
+
   constructor(private modalService: BsModalService, private cdRef: ChangeDetectorRef) {}
+
   modalRef?: BsModalRef;
+  private taskService: TaskService = inject(TaskService);
 
   @Output() dateSelected = new EventEmitter<string>();
 
   @ViewChild('taskModal') taskModal!:  TemplateRef<any>;
 
-  selectedDate: string | null = null;
+  @ViewChild('fullcalendar') calendarComponent!: FullCalendarComponent;
+events: any[] = []
 
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    plugins: [dayGridPlugin, interactionPlugin],
-    dateClick: this.handleDateClick.bind(this),
-    events: [{ title: 'Event example', date: '2024-04-10' }]
-  };
+  selectedDate: string | null = null;
+  allTasks : Task[] = []
+  calendarOptions: CalendarOptions = {} as CalendarOptions;
+
 
   handleDateClick(arg: any) {
     if (this.modalRef) {
@@ -45,6 +60,56 @@ export class CalendarComponent {
     this.cdRef.detectChanges();
   }
 
+  addTaskToCalendar(task: TaskRequest) {
+    const calendarApi = this.calendarComponent.getApi();
 
+    calendarApi.addEvent({
+      title: task.title,
+      start: task.date,
+      extendedProps: {
+        description: task.description,
+        duration: task.duration
+      }
+    });
+  }
+
+  loadTasks(): void {
+    const calendarApi = this.calendarComponent.getApi();
+    calendarApi.removeAllEvents();
+
+    this.taskService.getTasks().subscribe({
+      next: (tasks: Task[]) => {
+        this.allTasks = tasks;
+        tasks.forEach(task => {
+          calendarApi.addEvent({
+            title: task.title,
+            start: task.date,
+            extendedProps: {
+              description: task.description,
+              duration: task.duration
+            }
+          });
+        });
+      },
+      error: err => console.error('Error al cargar tareas', err)
+    });
+  }
+
+
+
+  ngAfterViewInit(): void {
+    this.loadTasks();
+  }
+  ngOnInit() {
+    this.calendarOptions = {
+      initialView: 'dayGridMonth',
+      plugins: [dayGridPlugin, interactionPlugin],
+      dateClick: this.handleDateClick.bind(this),
+      eventContent: renderCustomEvent,
+      events: [],
+      height: 'auto',
+      contentHeight: 'auto',
+    };
+  }
 
 }

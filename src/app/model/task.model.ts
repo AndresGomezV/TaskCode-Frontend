@@ -6,6 +6,7 @@ export interface Task {
   description: string;
   duration: number;
   creationDate: string;
+  date: string;
   status: TaskStatus;
   userId: number | null;
 }

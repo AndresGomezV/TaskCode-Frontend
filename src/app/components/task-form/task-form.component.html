@@ -32,5 +32,9 @@
     <button type="submit"  [disabled]="taskForm.invalid">
       Add Task
     </button>
+
+  @if (errorMessage) {
+    <span class="helper-text red-text center-align">{{errorMessage}}</span>
+  }
 </form>
 
