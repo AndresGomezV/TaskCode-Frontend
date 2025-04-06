@@ -13,7 +13,15 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrl);
-  }
+  getUsers()
+  : Observable<User[]> {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+      return this.http.get<User[]>(this.apiUrl, {headers});
+    }
+
 }

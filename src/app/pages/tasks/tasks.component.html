@@ -1,9 +1,104 @@
-
-
 <app-sidebar></app-sidebar>
 <div class="dashboard-content">
-  <!-- contenido principal del Dashboard -->
-  <h1>DashBoard</h1>
-  <p>tasks works!</p>
-  <router-outlet></router-outlet>
+  <form [formGroup]="filtersForm" (ngSubmit)="applyFilters()" class="container">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card-panel z-depth-4 login-card">
+          <h4 class="center-align deep-purple-text text-darken-3">Tasks</h4>
+
+          <!-- User Filter -->
+          <div class="input-field">
+            <i class="material-icons prefix deep-purple-text text-darken-2">group</i>
+            <div class="select-wrapper">
+              <label for="selectedUserId">User</label>
+              <select formControlName="selectedUserId" id="selectedUserId" class="browser-default select-role">
+                @for (user of users; track user.id) {
+                  <option [ngValue]="user.id">{{ user.username }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <!-- Task Status Filter -->
+          <div class="input-field">
+            <i class="material-icons prefix deep-purple-text text-darken-2">notes</i>
+            <div class="select-wrapper">
+              <label for="selectedStatus">Task Status</label>
+              <select formControlName="selectedStatus" id="selectedStatus" class="browser-default select-role">
+                @for (status of statuses; track status) {
+                  <option [ngValue]="status">{{ status.charAt(0).toUpperCase() + status.slice(1).toLowerCase() }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <br>
+
+          <!-- Action Buttons -->
+          <div class="center-align">
+            <button type="submit" class="btn login-btn" [disabled]="filtersForm.invalid">
+              Filter
+            </button>
+
+            @if (filtersApplied) {
+              <button type="button"
+                      class="btn waves-effect waves-light clear-btn white deep-purple-text text-darken-3"
+                      (click)="clearFilters()"
+                      style="margin-left: 10px;">
+                Clear Filters
+              </button>
+            }
+          </div>
+
+          <br>
+
+          <!-- Tasks List -->
+          
+
+          @if (tasks.length > 0) {
+            @for (task of tasks; track task.id) {
+              <div class="task-item">
+                <h5 class="deep-purple-text text-darken-3">{{ getUsernameById(task.userId) }}</h5>
+                <h6> {{ task.title }}</h6>
+                <p>{{ task.description }}</p>
+                <p>Task duration: {{ task.duration }}h</p>
+                <p>
+                  Status:
+                  <strong [ngClass]="{
+      'deep-purple-text text-darken-3': task.status === 'PENDING',
+      'green-text text-darken-2': task.status === 'ACCEPTED',
+      'red-text text-darken-2': task.status === 'REJECTED'
+    }">
+                    {{ task.status }}
+                  </strong>
+                </p>
+
+                <!-- Action Buttons -->
+                @if (task.status === 'PENDING') {
+                  <div class="action-buttons">
+                    <button class="btn-small green lighten-1 white-text"
+                            (click)="updateTaskStatus(task.id, 'ACCEPTED')">
+                      Accept
+                    </button>
+                    <button class="btn-small red lighten-1 white-text"
+                            (click)="updateTaskStatus(task.id, 'REJECTED')"
+                            style="margin-left: 10px;">
+                      Reject
+                    </button>
+                  </div>
+                }
+
+                <hr>
+              </div>
+            }
+          } @else if (filtersApplied) {
+            <p class="center-align grey-text">
+              No tasks to show
+            </p>
+          }
+
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

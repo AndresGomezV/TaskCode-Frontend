@@ -1,0 +1,33 @@
+.dashboard-content {
+  flex-grow: 1; /* El contenido principal ocupa el resto del espacio */
+  padding: 20px; /* Espaciado alrededor del contenido */
+  margin-left: 250px; /* Deja espacio para el sidebar */
+  width: calc(100% - 250px); /* Ajusta el contenido al lado derecho */
+  min-height: 100vh; /* Asegura que el contenido ocupe toda la altura */
+}
+
+.login-btn {
+  color: white;
+  font-weight: bold;
+  padding: 0 2rem;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.clear-btn {
+  border: 1px solid #673ab7;
+  background-color: white;
+  color: #673ab7;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: 0.3s ease;
+}
+
+.clear-btn:hover {
+  background-color: #ede7f6;
+}
+
+.input-field .prefix {
+  margin-top: 22px;
+}
