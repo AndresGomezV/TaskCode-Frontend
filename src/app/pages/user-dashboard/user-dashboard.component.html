@@ -1,0 +1,40 @@
+<div class="card-panel welcome-card z-depth-4">
+  <h2 class="welcome-message">Welcome back</h2>
+  <h1 class="username">{{ username }}!</h1>
+</div>
+
+
+<div class="user-dashboard">
+  <div class="card-panel summary-card">
+    <h5>Total Tasks</h5>
+    <h4>{{ totalTasks }}</h4>
+  </div>
+
+  <div class="card-panel summary-card">
+    <h5>Accepted Tasks</h5>
+    <h4>{{ completedTasks }}</h4>
+  </div>
+
+  <div class="card-panel summary-card">
+    <h5>Pending Tasks</h5>
+    <h4>{{ pendingTasks }}</h4>
+  </div>
+
+  <div class="card-panel summary-card">
+    <h5>Rejected Tasks</h5>
+    <h4>{{ rejectedTasks }}</h4>
+  </div>
+
+  <div class="card-panel progress-card">
+    <h5>Task Completion Progress</h5>
+    <progress class="progress-bar" value="{{ completedTasks }}" max="{{ totalTasks }}"></progress>
+    <div class="progress-text">
+      <span>{{ (completedTasks / totalTasks * 100) | number: '1.0-0' }}% Completed</span>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h5>Task Status Distribution</h5>
+    <canvas #taskChart width="400" height="400"></canvas>
+  </div>
+</div>

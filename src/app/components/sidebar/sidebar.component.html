@@ -1,25 +1,39 @@
-<aside class="sidebar">
-  <div class="card-panel z-depth-4 sidebar-card">
-    <ul class="sidebar-list">
+<nav class="topbar z-depth-1">
+  <div class="nav-wrapper white">
+    <ul class="topbar-list">
       <li>
         <a routerLink="/dashboard" routerLinkActive="active">
           <i class="material-icons prefix deep-purple-text text-darken-2">home</i>
           Home
         </a>
       </li>
+
+      @if (userRole === 'USER') {
+        <li>
+          <a routerLink="/calendar" routerLinkActive="active">
+            <i class="material-icons prefix deep-purple-text text-darken-2">date_range</i>
+            Calendar
+          </a>
+        </li>
+      }
+
+      @if (userRole === 'ADMIN') {
       <li>
         <a routerLink="/tasks" routerLinkActive="active">
           <i class="material-icons prefix deep-purple-text text-darken-2">assignment</i>
           Tasks
         </a>
       </li>
-      <li>
-        <a routerLink="/users" routerLinkActive="active">
-          <i class="material-icons prefix deep-purple-text text-darken-2">group</i>
-          Users
-        </a>
-      </li>
-      <li>
+      }
+
+      <!--      <li>-->
+      <!--        <a routerLink="/users" routerLinkActive="active">-->
+      <!--          <i class="material-icons prefix deep-purple-text text-darken-2">group</i>-->
+      <!--          Users-->
+      <!--        </a>-->
+      <!--      </li>-->
+
+      <li class="right-align">
         <a (click)="logout()" class="red-text">
           <i class="material-icons prefix red-text">logout</i>
           Logout
@@ -27,4 +41,4 @@
       </li>
     </ul>
   </div>
-</aside>
+</nav>

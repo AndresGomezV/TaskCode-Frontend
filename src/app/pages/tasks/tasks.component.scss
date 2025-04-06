@@ -1,11 +1,15 @@
 .dashboard-content {
-  flex-grow: 1; /* El contenido principal ocupa el resto del espacio */
-  padding: 20px; /* Espaciado alrededor del contenido */
-  margin-left: 250px; /* Deja espacio para el sidebar */
-  width: calc(100% - 250px); /* Ajusta el contenido al lado derecho */
-  min-height: 100vh; /* Asegura que el contenido ocupe toda la altura */
+  flex-grow: 1;
+
+margin-top: 100px;
+
+  min-height: 100vh;
+
 }
 
+.card-panel {
+  border-radius: 25px;
+}
 .login-btn {
   color: white;
   font-weight: bold;
@@ -31,3 +35,73 @@
 .input-field .prefix {
   margin-top: 22px;
 }
+
+.btn-accept {
+ background-color: #4caf50;
+  color: white;
+  border-radius: 25px;
+}
+
+.btn-reject {
+  color: white;
+  border-radius: 25px ;
+  background-color: #f44336;
+  margin-left: 10px;
+}
+
+.task-item {
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: rgba(106, 17, 203, 0.09);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #4a148c;
+}
+
+.task-user {
+  font-size: 0.95rem;
+  color: #6a1b9a;
+}
+
+.task-info {
+  margin-top: 10px;
+  color: #333;
+}
+
+.task-status {
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.task-status.pending {
+  background-color: #d1c4e9;
+  color: #4a148c;
+}
+
+.task-status.accepted {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.task-status.rejected {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+.action-buttons {
+  margin-top: 10px;
+}
+

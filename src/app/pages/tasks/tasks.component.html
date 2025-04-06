@@ -53,44 +53,71 @@
           <br>
 
           <!-- Tasks List -->
-          
+
 
           @if (tasks.length > 0) {
             @for (task of tasks; track task.id) {
               <div class="task-item">
-                <h5 class="deep-purple-text text-darken-3">{{ getUsernameById(task.userId) }}</h5>
-                <h6> {{ task.title }}</h6>
-                <p>{{ task.description }}</p>
-                <p>Task duration: {{ task.duration }}h</p>
-                <p>
-                  Status:
-                  <strong [ngClass]="{
-      'deep-purple-text text-darken-3': task.status === 'PENDING',
-      'green-text text-darken-2': task.status === 'ACCEPTED',
-      'red-text text-darken-2': task.status === 'REJECTED'
-    }">
-                    {{ task.status }}
-                  </strong>
-                </p>
-
-                <!-- Action Buttons -->
-                @if (task.status === 'PENDING') {
-                  <div class="action-buttons">
-                    <button class="btn-small green lighten-1 white-text"
-                            (click)="updateTaskStatus(task.id, 'ACCEPTED')">
-                      Accept
-                    </button>
-                    <button class="btn-small red lighten-1 white-text"
-                            (click)="updateTaskStatus(task.id, 'REJECTED')"
-                            style="margin-left: 10px;">
-                      Reject
-                    </button>
+                <div class="task-header">
+                  <div>
+                    <div class="task-title">{{ task.title }}</div>
+                    <div class="task-user">User: {{ getUsernameById(task.userId) }}</div>
                   </div>
+                  <div class="task-status"
+                       [ngClass]="{
+              'pending': task.status === 'PENDING',
+              'accepted': task.status === 'ACCEPTED',
+              'rejected': task.status === 'REJECTED'
+           }">
+                    {{ task.status }}
+                  </div>
+                </div>
+
+                <div class="task-info">
+                  <p>{{ task.description }}</p>
+                  <p>⏱ Duration: {{ task.duration }}h</p>
+                </div>
+
+                @switch (task.status) {
+                  @case ('PENDING') {
+                    <div class="action-buttons right-align">
+                      <button title="Accept task" class=" btn-accept btn-small white-text"
+
+                              (click)="updateTaskStatus(task.id, 'ACCEPTED')">
+                        <i class="material-icons">check</i>
+                      </button>
+
+                      <button title="Reject task" class="btn-reject btn-small white-text"
+                              (click)="updateTaskStatus(task.id, 'REJECTED')">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </div>
+                  }
+
+                  @case ('ACCEPTED') {
+                    <div class="action-buttons right-align">
+                      <button title="Reject task" class="btn-reject btn-small white-text"
+
+                              (click)="updateTaskStatus(task.id, 'REJECTED')">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </div>
+                  }
+                  @case ('REJECTED') {
+                    <div class="action-buttons right-align">
+                      <button title="Accept task" class="btn-accept btn-small white-text"
+
+                              (click)="updateTaskStatus(task.id, 'ACCEPTED')">
+                        <i class="material-icons">check</i>
+                      </button>
+                    </div>
+                  }
                 }
 
-                <hr>
               </div>
             }
+
+
           } @else if (filtersApplied) {
             <p class="center-align grey-text">
               No tasks to show

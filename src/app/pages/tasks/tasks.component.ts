@@ -6,7 +6,6 @@ import {SidebarComponent} from '../../components/sidebar/sidebar.component';
 import {User} from '../../model/user.model';
 import {UserService} from '../../services/user.service';
 import {ReactiveFormsModule, FormBuilder} from "@angular/forms";
-import {TaskCardComponent} from '../../components/task-card/task-card.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,7 +15,7 @@ import { CommonModule } from '@angular/common';
     // RouterOutlet,
     SidebarComponent,
     ReactiveFormsModule,
-    // TaskCardComponent
+
   ],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'

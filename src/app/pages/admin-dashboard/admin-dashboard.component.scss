@@ -10,8 +10,6 @@ html, body {
 
 
 app-sidebar {
-  width: 250px; /* El sidebar ocupa 250px de ancho */
-  height: 100vh; /* 100vh hace que el sidebar ocupe toda la altura de la pantalla */
   position: fixed; /* Fija el sidebar en el lado izquierdo */
   top: 0;
   left: 0;
@@ -20,8 +18,104 @@ app-sidebar {
 
 .dashboard-content {
   flex-grow: 1; /* El contenido principal ocupa el resto del espacio */
-  padding: 20px; /* Espaciado alrededor del contenido */
-  margin-left: 250px; /* Deja espacio para el sidebar */
-  width: calc(100% - 250px); /* Ajusta el contenido al lado derecho */
+
   min-height: 100vh; /* Asegura que el contenido ocupe toda la altura */
+}
+
+.admin-dashboard {
+  padding: 20px;
+}
+
+
+.welcome-card {
+  padding: 15px 30px;
+  border-bottom-right-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+
+  margin-top: 20px;
+}
+
+.welcome-message {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.username {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #4a148c;
+  letter-spacing: 1.2px;
+  text-transform: capitalize;
+  margin-top: 0;
+  display: inline-block;
+  border-bottom: 3px solid #4a148c;
+  padding-bottom: 5px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.username:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+/* Responsividad */
+@media (max-width: 600px) {
+  .welcome-message {
+    margin: 10px;
+    font-size: 1.5rem;
+
+  }
+  .welcome-card {
+    width: 100%;
+  }
+
+}
+
+
+.summary-card {
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* Colores personalizados */
+
+.total-card {
+  background-color: rgba(106, 17, 203, 0.09);
+  color: #4a148c;
+}
+.accepted-card {
+  background-color: #e8f5e9; /* verde claro */
+  color: #2e7d32;
+}
+
+.rejected-card {
+  background-color: #ffebee; /* rojo claro */
+  color: #c62828;
+}
+
+.pending-card {
+  background-color: #fff8e1; /* amarillo claro */
+  color: #f9a825;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 992px) {
+  .admin-dashboard {
+    margin-left: 0;
+    padding: 15px;
+  }
 }

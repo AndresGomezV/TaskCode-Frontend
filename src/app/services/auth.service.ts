@@ -22,14 +22,19 @@ export class AuthService {
   }
 
   login(username: string, password:string): Observable<{ token: string }> {
+    localStorage.setItem('username', username);
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, {
       username,
       password
     });
+
+
+
   }
 
   logout():void {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
   }
 
   saveToken(token: string): void {

@@ -1,79 +1,66 @@
-/* Aseguramos que el sidebar ocupe toda la altura de la pantalla */
+
 html, body {
   height: 100% !important;
-  margin: 0 !important; /* Eliminar márgenes por defecto */
+  margin: 0 !important;
 }
 
-.card-panel.z-depth-4.sidebar-card {
-  box-shadow: none !important;
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  z-index: 1000;
+  background-color: #ffffff !important;
+  padding: 0 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.topbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 5px;
+}
+
+.topbar-list li a {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #000000;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  gap: 10px;
+}
+
+.topbar-list li a:hover {
+  background-color: #4a148c !important;
+  color: #ffffff !important;
+}
+
+.topbar-list li a:hover i {
+  color: #ffffff !important;
 }
 
 
-.sidebar {
-  width: 250px !important; /* Ancho del sidebar */
-  background-color: #ffffff !important; /* Fondo blanco */
-  position: fixed !important; /* Fijo al lado izquierdo */
-  height: 100vh !important; /* Asegura que el sidebar ocupe toda la altura de la pantalla */
-  top: 0 !important;
-  left: 0 !important;
-  padding-top: 20px !important; /* Espaciado superior */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1) !important; /* Agregar sombra sutil */
+
+.topbar-list li a.red-text {
+  color: #d32f2f !important;
 }
 
-.sidebar-card {
-  border-radius: 10px !important; /* Bordes redondeados */
-  padding: 20px !important; /* Espaciado interno */
+.topbar-list li a.red-text:hover {
+  background-color: #f44336 !important;
+  color: #ffffff !important;
 }
 
-.sidebar-list {
-  padding: 0 !important;
-  list-style-type: none !important; /* Sin puntos en la lista */
+.right-align {
+  margin-left: auto;
 }
-
-
-
-.sidebar-list li {
-  margin-bottom: 15px !important; /* Espaciado entre los elementos */
-}
-
-.sidebar-list li a {
-  font-size: 16px !important;
-  text-transform: uppercase !important; /* Letras mayúsculas */
-  font-weight: 500 !important; /* Peso de la fuente */
-  color: #000000 !important;
-  display: flex !important;
-  padding: 10px !important;
-  border-radius: 5px !important;
-  transition: background-color 0.3s ease, color 0.3s ease !important; /* Transición suave */
-  align-items: center !important;
-  gap: 10px !important; /* Espacio entre el icono y el texto */
-}
-
-.sidebar-list li a:hover i {
-  color: #ffffff !important; /* o el color que quieras */
-}
-
-.sidebar-list li a.active {
-  background-color: transparent !important;
-  color: inherit !important;
-}
-
-.sidebar-list li a.active i {
-  color: inherit !important;
-}
-
-.sidebar-list li a:hover {
-  background-color: #4a148c !important; /* Color de fondo al pasar el ratón */
-  color: #ffffff !important; /* Color de texto blanco */
-}
-
-.sidebar-list li a.red-text {
-  color: #d32f2f !important; /* Color rojo para logout */
-}
-
-.sidebar-list li a.red-text:hover {
-  background-color: #f44336 !important; /* Fondo rojo cuando se pasa el ratón */
-  color: #ffffff !important; /* Texto blanco en hover */
-}
-
 

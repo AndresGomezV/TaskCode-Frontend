@@ -20,7 +20,7 @@ export class TaskFormComponent {
   taskForm = this.formBuilder.group({
     title: ['', [Validators.required, Validators.minLength(1)]],
     description: ['', [Validators.required, Validators.minLength(1)]],
-    duration: ['', [Validators.required, Validators.min(1)]],
+    duration: ['', [Validators.required, Validators.min(1), Validators.max(8)]],
   })
 
   onSubmit(): void {

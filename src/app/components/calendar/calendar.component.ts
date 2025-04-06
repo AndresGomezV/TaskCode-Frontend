@@ -5,12 +5,14 @@ import { CalendarOptions } from '@fullcalendar/core';
 import {FullCalendarModule} from '@fullcalendar/angular';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {TaskFormComponent} from '../task-form/task-form.component';
+import {SidebarComponent} from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-calendar',
   imports: [
     FullCalendarModule,
-    TaskFormComponent
+    TaskFormComponent,
+    SidebarComponent
   ],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']

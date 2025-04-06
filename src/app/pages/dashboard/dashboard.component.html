@@ -1,8 +1,9 @@
+  <app-sidebar></app-sidebar>
 <div class="dashboard">
-  <h3>Dashboard</h3>
   <div>
     @if (userRole === 'USER') {
-      <app-calendar (dateSelected)="onDateSelected($event)"></app-calendar>
+      <app-user-dashboard></app-user-dashboard>
+
     }
   </div>
   <div class="admin-dashboard">
