@@ -2,3 +2,12 @@ full-calendar {
   margin-top: 80px;
 }
 
+.task-action-buttons {
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+  transform: translateX(-65px) translateY(-10px);
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TaskRequest} from "../model/task-request.model";
 import {Task, TaskStatus} from "../model/task.model";
+import {TaskUpdate} from '../model/task-update.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class TaskService {
       'Content-Type': 'application/json',
     });
 
-    return this.http.post<any>(this.apiUrl, task, {headers});
+    return this.http.post<TaskRequest>(this.apiUrl, task, {headers});
   }
 
   getTasks(filters?: { userId: string | number | undefined; status: string | undefined }): Observable<Task[]> {
@@ -50,6 +51,24 @@ export class TaskService {
     });
 
     return this.http.put<Task>(`${this.apiUrl}/${taskId}/status`, { status: newStatus}, {headers});
+  }
+
+  deleteTaskById(taskId:number) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.delete(`${this.apiUrl}/${taskId}`, { headers });
+  }
+
+  updateTask(taskId: number, newTask: TaskUpdate ): Observable<TaskUpdate> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.put<TaskUpdate>(`${this.apiUrl}/${taskId}`, newTask, { headers });
   }
 }
 

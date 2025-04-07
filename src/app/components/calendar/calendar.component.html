@@ -1,12 +1,31 @@
 <app-sidebar></app-sidebar>
 <full-calendar #fullcalendar [options]="calendarOptions"></full-calendar>
 
+@if (showTaskModal) {
+  <div class="task-action-buttons" [ngStyle]="{
+      position: 'absolute',
+      top: actionBtnPosition.y + 'px',
+      left: actionBtnPosition.x + 'px'
+    }">
+    <button  (click)="openEditModal()" title="Edit" class="btn-floating btn-small light-green"><i class="material-icons">create</i></button>
+    <button (click)="deleteTask()" title="Delete" class="btn-floating btn-small red"><i class="material-icons">delete</i></button>
+  </div>
+}
+
 <ng-template #taskModal>
   <div class="modal-header">
     <button type="button" class="close" (click)="modalRef?.hide()">&times;</button>
+
   </div>
   <div class="modal-body">
-    <app-task-form  [existingTasks]="allTasks" [selectedDate]="selectedDate" (taskCreated)="loadTasks()"></app-task-form>
+    <app-task-form
+      [isEditing]="isEditing"
+      (editedTask)="onTaskEdited($event)"
+      [taskToEdit]="selectedTask"
+      [existingTasks]="allTasks"
+      [selectedDate]="selectedDate"
+      (taskCreated)="onTaskCreated($event)">
+    </app-task-form>
   </div>
 </ng-template>
 

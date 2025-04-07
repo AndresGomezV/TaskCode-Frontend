@@ -250,9 +250,9 @@ div.modal-container.modal.fade.show {
 
 .fc-daygrid-day-events {
   overflow-y: auto;
-  max-height: 12rem;
+  height: 13rem;
+  max-height: 13rem;
   padding-right: 1px;
-
 }
 
 /* Aplica a los contenedores con scroll como descripción y celda del día */
@@ -271,7 +271,7 @@ div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
 /* El thumb (la barra que se mueve) */
 .fc-daygrid-day-events::-webkit-scrollbar-thumb,
 div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
-  background-color: rgba(106, 17, 203, 0.5); /* color morado semitransparente */
+  background-color: rgba(106, 17, 203, 0.5);
   border-radius: 6px;
 }
 

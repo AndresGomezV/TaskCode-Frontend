@@ -1,6 +1,5 @@
 <br>
-<h3>Create a Task</h3>
-
+<h3>{{ isEditing ? 'Update Task' : 'Create Task' }}</h3>
 <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="container">
 
   <!-- Title -->
@@ -30,7 +29,7 @@
   </div>
 
     <button type="submit"  [disabled]="taskForm.invalid">
-      Add Task
+      {{ isEditing ? 'Update Task' : 'Add Task' }}
     </button>
 
   @if (errorMessage) {
