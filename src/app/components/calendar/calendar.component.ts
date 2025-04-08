@@ -144,7 +144,7 @@ export class CalendarComponent implements OnInit,AfterViewInit {
        }
         this.modalRef?.hide();
         this.showTaskModal = false;
-
+        this.loadTasks();
       },
       error: err => {
         console.error('Error updating task', err)

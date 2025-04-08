@@ -33,7 +33,7 @@ export class TaskFormComponent implements OnChanges{
   })
 
   onSubmit(): void {
-    if (this.taskForm.invalid || !this.selectedDate) return;
+    if (this.taskForm.invalid && !this.selectedDate) return;
 
     if (this.isEditing) {
       const editedTask: TaskUpdate = {
@@ -43,7 +43,7 @@ export class TaskFormComponent implements OnChanges{
       }
       this.editedTask.emit({ id: this.taskToEdit!.id, updatedTask: editedTask })
       return;
-    } else {
+    }
 
     const newDuration = Number(this.taskForm.value.duration);
     const selectedDate = this.selectedDate;
@@ -81,7 +81,7 @@ export class TaskFormComponent implements OnChanges{
     this.taskCreated.emit(taskData)
     this.taskForm.reset();
   }
-  }
+
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.isEditing && this.taskToEdit) {
