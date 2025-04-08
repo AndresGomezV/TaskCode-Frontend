@@ -1,19 +1,22 @@
-import { Component, inject, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
-import { TaskService } from '../../services/task.service';
-import { Task } from "../../model/task.model";
-import { assignTaskStats} from '../../utils/task-helpers';
+import {Component, inject, Input, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {TaskChartComponent} from '../../components/task-chart/task-chart.component';
+import {TaskService} from '../../services/task.service';
+import {Task} from '../../model/task.model';
+import {assignTaskStats} from '../../utils/task-helpers';
+
 @Component({
-  selector: 'app-user-dashboard',
-  imports: [DecimalPipe, TaskChartComponent],
-  templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.scss']
+  selector: 'app-dashboard-stats',
+  imports: [CommonModule, TaskChartComponent],
+  templateUrl: './dashboard-stats.component.html',
+  styleUrl: './dashboard-stats.component.scss'
 })
-export class UserDashboardComponent implements OnInit {
+export class DashboardStatsComponent implements OnInit{
 
   username = localStorage.getItem('username');
+
   taskService = inject(TaskService);
+
   tasks: Task[] = [];
   totalTasks = 0;
   completedTasks = 0;
@@ -35,4 +38,3 @@ export class UserDashboardComponent implements OnInit {
     this.getTasks();
   }
 }
-

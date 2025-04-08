@@ -1,16 +1,6 @@
   <app-sidebar></app-sidebar>
 <div class="dashboard">
-  <div>
-    @if (userRole === 'USER') {
-      <app-user-dashboard></app-user-dashboard>
-
-    }
-  </div>
-  <div class="admin-dashboard">
-  @if (userRole === 'ADMIN') {
-    <app-admin-dashboard></app-admin-dashboard>
-  }
-  </div>
+  <app-dashboard-stats></app-dashboard-stats>
 </div>
 
 

@@ -4,7 +4,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { authGuard } from './guards/auth.guard';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {TasksComponent} from './pages/tasks/tasks.component';
-import {UsersComponent} from './pages/users/users.component';
 import {CalendarComponent} from './components/calendar/calendar.component';
 
 export const routes: Routes = [
@@ -13,6 +12,5 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent, title: 'Register' },
   { path: 'dashboard', component: DashboardComponent, title: 'Dashboard', canActivate: [authGuard] },
   { path: 'tasks', component: TasksComponent, title: 'Tasks', canActivate: [authGuard], data: { role: 'ADMIN' } },
-  { path: 'users', component: UsersComponent, title: 'Users', canActivate: [authGuard], data: { role: 'ADMIN' } },
   { path: 'calendar', component: CalendarComponent, title: 'Calendar', canActivate: [authGuard] }
 ];
