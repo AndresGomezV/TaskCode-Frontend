@@ -48,10 +48,10 @@
       <span>{{ (completedTasks / totalTasks * 100) | number: '1.0-0' }}% Completed</span>
     </div>
   </div>
-  <div class="card-panel summary-card col s12 m6 l3">
-  <div class="chart-card">
-    <h5>Task Status Distribution</h5>
-    <canvas #taskChart></canvas>
-  </div>
-</div>
+
+  <app-task-chart
+    [completedTasks]="completedTasks"
+    [pendingTasks]="pendingTasks"
+    [rejectedTasks]="rejectedTasks"
+  ></app-task-chart>
   </div>

@@ -16,7 +16,6 @@ html, body {
   max-width: 800px;
   box-sizing: border-box;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
-
 }
 
 
@@ -293,3 +292,16 @@ div[style*="overflow-y: auto"]::-webkit-scrollbar-button {
   }
 }
 
+@media screen and (max-width: 884px) {
+  .modal, .bs-modal {
+
+    width: 85%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .modal, .bs-modal {
+
+    width: 95% !important;
+    max-width: 800px !important;
+  }
+}

@@ -128,6 +128,7 @@ export class CalendarComponent implements OnInit,AfterViewInit {
       if (event) event.remove();
       this.selectedTask = null;
       this.showTaskModal = false;
+      this.loadTasks()
     },
       err => { console.error('Error deleting task', err); })
   }

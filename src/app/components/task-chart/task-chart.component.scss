@@ -1,0 +1,27 @@
+.chart-card {
+  text-align: center;
+  padding: 20px;
+}
+
+.chart-card h5 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+canvas {
+  width: 100% !important;
+  max-width: 500px;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .chart-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-card h5 {
+  font-size: 1rem;
+}
+}

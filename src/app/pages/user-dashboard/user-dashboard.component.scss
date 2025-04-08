@@ -173,21 +173,7 @@ body {
   font-size: 1rem;
 }
 
-.chart-card {
-  text-align: center;
-  padding: 20px;
-}
 
-.chart-card h5 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-canvas {
-  width: 100% !important;
-  max-width: 500px;
-  height: auto !important;
-}
 
 /* Media Queries para Responsividad */
 @media (max-width: 768px) {
@@ -196,12 +182,6 @@ canvas {
   }
 
   .summary-card {
-    padding: 15px;
-  }
-
-
-
-  .chart-card {
     padding: 15px;
   }
 }
@@ -225,11 +205,5 @@ canvas {
 
   .summary-card h5 {
     font-size: 0.9rem;
-  }
-
-
-
-  .chart-card h5 {
-    font-size: 1rem;
   }
 }

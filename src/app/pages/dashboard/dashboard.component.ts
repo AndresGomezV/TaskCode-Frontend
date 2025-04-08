@@ -21,11 +21,6 @@ export class DashboardComponent {
   authService = inject(AuthService);
   private router = inject(Router);
   userRole = this.authService.getUserRole();
-
-  selectedDate: string | null = null;
-
-  onDateSelected(date: string) {
-    this.selectedDate = date;
-  }
+  
 
 }

@@ -2,44 +2,56 @@
   <h2 class="welcome-message">Welcome back</h2>
   <h1 class="username">{{ username }}!</h1>
 </div>
-<div class="admin-dashboard">
-  <div class="row dashboard-cards">
 
-    <!-- Total Tasks -->
-    <div class="col s12 m6 l3">
-      <div class="card-panel summary-card total-card">
-        <i class="material-icons icon large ">assignment</i>
-        <h5 class="deep-purple-text text-darken-3">Total Tasks</h5>
-        <h4>{{ totalTasks }}</h4>
-      </div>
+
+<div class="user-dashboard">
+  <!-- Total Tasks -->
+  <div class="col s12 m6 l3">
+    <div class="card-panel summary-card total-card">
+      <i class="material-icons icon large ">assignment</i>
+      <h5 class="deep-purple-text text-darken-3">Total Tasks</h5>
+      <h4>{{ totalTasks }}</h4>
     </div>
-
-    <!-- Accepted Tasks -->
-    <div class="col s12 m6 l3">
-      <div class="card-panel summary-card accepted-card">
-        <i class="material-icons icon large">check_circle</i>
-        <h5>Accepted</h5>
-        <h4>{{ acceptedTasks }}</h4>
-      </div>
-    </div>
-
-    <!-- Rejected Tasks -->
-    <div class="col s12 m6 l3">
-      <div class="card-panel summary-card rejected-card">
-        <i class="material-icons icon large">cancel</i>
-        <h5>Rejected</h5>
-        <h4>{{ rejectedTasks }}</h4>
-      </div>
-    </div>
-
-    <!-- Pending Tasks -->
-    <div class="col s12 m6 l3">
-      <div class="card-panel summary-card pending-card">
-        <i class="material-icons icon large">hourglass_empty</i>
-        <h5>Pending</h5>
-        <h4>{{ pendingTasks }}</h4>
-      </div>
-    </div>
-
   </div>
+
+  <!-- Accepted Tasks -->
+  <div class="col s12 m6 l3">
+    <div class="card-panel summary-card accepted-card">
+      <i class="material-icons icon large">check_circle</i>
+      <h5>Accepted</h5>
+      <h4>{{ completedTasks }}</h4>
+    </div>
+  </div>
+
+  <!-- Rejected Tasks -->
+  <div class="col s12 m6 l3">
+    <div class="card-panel summary-card rejected-card">
+      <i class="material-icons icon large">cancel</i>
+      <h5>Rejected</h5>
+      <h4>{{ rejectedTasks }}</h4>
+    </div>
+  </div>
+
+  <!-- Pending Tasks -->
+  <div class="col s12 m6 l3">
+    <div class="card-panel summary-card pending-card">
+      <i class="material-icons icon large">hourglass_empty</i>
+      <h5>Pending</h5>
+      <h4>{{ pendingTasks }}</h4>
+    </div>
+  </div>
+
+  <div class=" card-panel summary-card progress-card">
+    <h5>Task Completion Progress</h5>
+    <progress class="progress-bar" value="{{ completedTasks }}" max="{{ totalTasks }}"></progress>
+    <div class="progress-text">
+      <span>{{ (completedTasks / totalTasks * 100) | number: '1.0-0' }}% Completed</span>
+    </div>
+  </div>
+
+  <app-task-chart
+    [completedTasks]="completedTasks"
+    [pendingTasks]="pendingTasks"
+    [rejectedTasks]="rejectedTasks"
+  ></app-task-chart>
 </div>

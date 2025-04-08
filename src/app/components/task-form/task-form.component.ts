@@ -5,10 +5,11 @@ import {TaskService} from '../../services/task.service';
 import {TaskRequest} from '../../model/task-request.model';
 import { Task } from '../../model/task.model';
 import {TaskUpdate} from '../../model/task-update.model';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-task-form',
-  imports: [ ReactiveFormsModule ],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss'
 })

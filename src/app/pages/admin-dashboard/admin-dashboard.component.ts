@@ -1,13 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {SidebarComponent} from '../../components/sidebar/sidebar.component';
-import {RouterOutlet} from '@angular/router';
 import {TaskService} from '../../services/task.service';
+import {DecimalPipe} from '@angular/common';
+import {Task} from '../../model/task.model';
+import { assignTaskStats} from '../../utils/task-helpers';
+import {TaskChartComponent} from '../../components/task-chart/task-chart.component';
 
 @Component({
   selector: 'app-admin-dashboard',
   imports: [
-    SidebarComponent,
-    RouterOutlet
+    DecimalPipe,
+    TaskChartComponent
   ],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.scss'
@@ -16,24 +18,22 @@ export class AdminDashboardComponent implements OnInit{
   private taskService = inject(TaskService);
 
   totalTasks = 0
-  acceptedTasks = 0
+  completedTasks = 0
   rejectedTasks = 0
   pendingTasks = 0
+
   username = localStorage.getItem('username');
+  tasks: Task[] = [];
 
-  getTasks(userId? : number, status?: string) {
-    this.taskService.getTasks({userId, status}).subscribe({
-      next: tasks => {
-        this.totalTasks = tasks.length;
-        this.acceptedTasks = tasks.filter(task => task.status === 'ACCEPTED').length
-        this.rejectedTasks = tasks.filter(task => task.status === 'REJECTED').length
-        this.pendingTasks = tasks.filter(task => task.status === 'PENDING').length
+  getTasks() {
+    this.taskService.getTasks().subscribe({
+      next: (tasks: Task[]) => {
+        assignTaskStats(this, tasks)
       },
-      error: error => {
-        console.error("Error fetching tasks", error);
+      error: () => {
+        console.error("Error: couldn't retrieve tasks");
       }
-
-    })
+    });
   }
 
   ngOnInit() {

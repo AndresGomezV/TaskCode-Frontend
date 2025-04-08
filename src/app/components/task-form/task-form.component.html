@@ -1,39 +1,41 @@
 <br>
 <h3>{{ isEditing ? 'Update Task' : 'Create Task' }}</h3>
+
 <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="container">
 
-  <!-- Title -->
-  <div class="input-field">
+  <!-- TITLE -->
+  <div class="input-field fixed-field">
     <i class="material-icons prefix deep-purple-text text-darken-2">text_fields</i>
+    <label class="fixed-label" for="title">Title</label>
     <input id="title" formControlName="title" type="text" class="validate" required>
-    <label for="title">Title</label>
   </div>
 
-  <!-- Description -->
-  <div class="input-field">
+  <!-- DESCRIPTION -->
+  <div class="input-field fixed-field">
     <i class="material-icons prefix deep-purple-text text-darken-2">notes</i>
+    <label class="fixed-label" for="description">Description</label>
     <textarea id="description" formControlName="description" class="materialize-textarea validate" required></textarea>
-    <label for="description">Description</label>
   </div>
 
-  <!-- Duration -->
-  <div class="input-field">
+  <!-- DURATION -->
+  <div class="input-field fixed-field">
     <i class="material-icons prefix deep-purple-text text-darken-2">schedule</i>
+    <label class="fixed-label" for="duration">Duration (Hours)</label>
     <input id="duration" formControlName="duration" type="number" class="validate" required>
-    <label for="duration">Duration (Hours)</label>
 
     @if (taskForm.get('duration')?.errors?.['min'] || taskForm.get('duration')?.errors?.['max']) {
       <span class="helper-text red-text">Please enter a task duration between 1 and 8 hours</span>
-      }
-
+    }
   </div>
 
-    <button type="submit"  [disabled]="taskForm.invalid">
-      {{ isEditing ? 'Update Task' : 'Add Task' }}
-    </button>
+  <!-- SUBMIT -->
+  <button type="submit" [disabled]="taskForm.invalid">
+    {{ isEditing ? 'Update Task' : 'Add Task' }}
+  </button>
 
+  <!-- ERROR -->
   @if (errorMessage) {
-    <span class="helper-text red-text center-align">{{errorMessage}}</span>
+    <span class="helper-text red-text center-align">{{ errorMessage }}</span>
   }
-</form>
 
+</form>
