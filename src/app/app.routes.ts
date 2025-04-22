@@ -14,5 +14,4 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, title: 'Dashboard', canActivate: [authGuard] },
   { path: 'tasks', component: TasksComponent, title: 'Tasks', canActivate: [authGuard], data: { role: 'ADMIN' } },
   { path: 'calendar', component: CalendarComponent, title: 'Calendar', canActivate: [authGuard] }
-  // { path: 'notifications', component: NotificationsComponent, title: 'Notifications' },
 ];

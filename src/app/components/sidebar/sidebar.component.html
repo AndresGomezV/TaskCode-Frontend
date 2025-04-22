@@ -2,7 +2,7 @@
   <div class="nav-wrapper white">
     <ul class="topbar-list">
       <li>
-        <a  title="Dashboard" routerLink="/dashboard" routerLinkActive="active">
+        <a title="Dashboard" routerLink="/dashboard" routerLinkActive="active">
           <i class="material-icons prefix deep-purple-text text-darken-2">home</i>
         </a>
       </li>
@@ -17,12 +17,12 @@
       }
 
       @if (userRole === 'ADMIN') {
-      <li>
-        <a title="Tasks" routerLink="/tasks" routerLinkActive="active">
-          <i class="material-icons prefix deep-purple-text text-darken-2">assignment</i>
+        <li>
+          <a title="Tasks" routerLink="/tasks" routerLinkActive="active">
+            <i class="material-icons prefix deep-purple-text text-darken-2">assignment</i>
 
-        </a>
-      </li>
+          </a>
+        </li>
       }
 
       <!--      <li>-->
@@ -33,17 +33,27 @@
       <!--      </li>-->
 
 
-
       <li>
-        <a title="Notifications" routerLink="/notifications" routerLinkActive="active" class="notification-link">
-    <span class="icon-badge-wrapper">
-      <i class="material-icons deep-purple-text text-darken-2">notifications</i>
-      @if (unreadCount > 0) {
-        <sup class="notification-badge">{{ unreadCount > 99 ? '99+' : unreadCount }}</sup>
-      }
-    </span>
-        </a>
+        <div style="position: relative;">
+          <a title="Notifications" class="notification-link">
+      <span class="icon-badge-wrapper" #bellRef (click)="openModal(bellRef)">
+        <i class="material-icons deep-purple-text text-darken-2">notifications</i>
+        @if (unreadCount > 0) {
+          <sup class="notification-badge">{{ unreadCount > 99 ? '99+' : unreadCount }}</sup>
+        }
+      </span>
+          </a>
+
+          @if (showModal) {
+            <app-notifications
+              [modalPosition]="modalPosition"
+              (close)="closeModal()">
+            </app-notifications>
+          }
+        </div>
       </li>
+
+
 
       <li class="right-align">
         <a title="Logout" (click)="logout()" class="red-text">
