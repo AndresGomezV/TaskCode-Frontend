@@ -1,15 +1,14 @@
 import {Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {ReactiveFormsModule, FormBuilder, Validators} from "@angular/forms";
-import { Router } from '@angular/router';
-import {TaskService} from '../../services/task.service';
+
 import {TaskRequest} from '../../model/task-request.model';
 import { Task } from '../../model/task.model';
 import {TaskUpdate} from '../../model/task-update.model';
-import {NgClass} from '@angular/common';
+
 
 @Component({
   selector: 'app-task-form',
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss'
 })

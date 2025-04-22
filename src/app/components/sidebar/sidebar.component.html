@@ -32,6 +32,19 @@
       <!--        </a>-->
       <!--      </li>-->
 
+
+
+      <li>
+        <a title="Notifications" routerLink="/notifications" routerLinkActive="active" class="notification-link">
+    <span class="icon-badge-wrapper">
+      <i class="material-icons deep-purple-text text-darken-2">notifications</i>
+      @if (unreadCount > 0) {
+        <sup class="notification-badge">{{ unreadCount > 99 ? '99+' : unreadCount }}</sup>
+      }
+    </span>
+        </a>
+      </li>
+
       <li class="right-align">
         <a title="Logout" (click)="logout()" class="red-text">
           <i class="material-icons prefix red-text">logout</i>
