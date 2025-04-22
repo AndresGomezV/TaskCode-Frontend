@@ -1,19 +1,24 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {NotificationService} from '../../services/notification.service';
 import {Notification} from '../../model/notification.model';
-import {DatePipe, NgStyle} from '@angular/common';
+import {DatePipe, NgClass, NgStyle} from '@angular/common';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-notifications',
   imports: [
     DatePipe,
-    NgStyle
+    NgStyle,
+    NgClass
   ],
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.scss'
 })
 export class NotificationsComponent implements OnInit {
+
+  private authService: AuthService = inject(AuthService);
   private notificationsService: NotificationService = inject(NotificationService);
+  userRole = this.authService.getUserRole();
   @Input() modalPosition: { top: number, left: number } = { top: 0, left: 0 };
   @Output() close = new EventEmitter();
   @Output() updateUnreadCount = new EventEmitter<number>();
@@ -32,7 +37,7 @@ export class NotificationsComponent implements OnInit {
 
   markAsRead(notification: Notification) {
     if (notification.isRead) return;
-    this.notificationsService.markAsRead(notification.id).subscribe({
+    this.notificationsService.markAsRead(notification.id!!).subscribe({
       next: () => {
         notification.isRead = true;
         this.updateUnreadNotifications()

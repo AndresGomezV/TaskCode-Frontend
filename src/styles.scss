@@ -305,3 +305,20 @@ div[style*="overflow-y: auto"]::-webkit-scrollbar-button {
     max-width: 800px !important;
   }
 }
+
+#toast-container {
+  bottom: 2rem !important;
+  top: auto !important;
+  right: 2rem !important;
+  left: auto !important;
+  max-width: 300px;
+  width: auto;
+}
+
+@media (max-width: 600px) {
+  #toast-container {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%);
+  }
+}

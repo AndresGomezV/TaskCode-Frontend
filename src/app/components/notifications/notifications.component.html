@@ -12,11 +12,28 @@
     <div class="notification-list">
       @for (notification of notifications; track notification.id) {
         <div class="notification-card" (click)="markAsRead(notification)" [class.unread]="!notification.isRead">
-          <p class="task-title">📌 Task created: {{ notification.taskTitle }}</p>
-          <p class="notification-info">
-            from <strong>{{ notification.senderUsername }}</strong>
-            • {{ notification.time | date:'MMMM d, h:mm a' }}
-          </p>
+
+          @if (userRole === 'ADMIN') {
+            <p class="task-title">📌 Task created: {{ notification.taskTitle }}</p>
+            <p class="notification-info">
+              from <strong>{{ notification.senderUsername }}</strong>
+              • {{ notification.time | date:'MMMM d, h:mm a' }}
+            </p>
+          }
+          @if (userRole === 'USER') {
+            <p class="task-title">
+              📌 Task "{{ notification.taskTitle }}" was
+              <span [ngClass]="{
+                'text-green': notification.notificationType === 'TASK_ACCEPTED',
+                'text-red': notification.notificationType === 'TASK_REJECTED'
+              }">
+                 {{ notification.notificationType === 'TASK_ACCEPTED' ? 'ACCEPTED' : 'REJECTED' }}
+               </span>
+            </p>
+            <p class="notification-info">
+              by <strong>{{ notification.senderUsername }}</strong> • {{ notification.time | date:'MMMM d, h:mm a' }}
+            </p>
+          }
         </div>
       }
     </div>
