@@ -11,7 +11,7 @@
   } @else {
     <div class="notification-list">
       @for (notification of notifications; track notification.id) {
-        <div class="notification-card" [class.unread]="!notification.isRead">
+        <div class="notification-card" (click)="markAsRead(notification)" [class.unread]="!notification.isRead">
           <p class="task-title">📌 Task created: {{ notification.taskTitle }}</p>
           <p class="notification-info">
             from <strong>{{ notification.senderUsername }}</strong>

@@ -57,4 +57,10 @@ export class SidebarComponent implements OnInit {
     })
 
   }
+
+  updateUnreadCount(newCount: number) {
+    this.unreadCount = newCount;
+  }
+
+  protected readonly event = event;
 }

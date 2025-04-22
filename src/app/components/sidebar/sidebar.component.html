@@ -47,7 +47,8 @@
           @if (showModal) {
             <app-notifications
               [modalPosition]="modalPosition"
-              (close)="closeModal()">
+              (close)="closeModal()"
+              (updateUnreadCount)="updateUnreadCount($event)">
             </app-notifications>
           }
         </div>
