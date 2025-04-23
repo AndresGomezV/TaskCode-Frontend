@@ -79,7 +79,7 @@ export class SidebarComponent implements OnInit {
 
       M.toast({
         html: message,
-        displayLength: 4000,
+        displayLength: 5000,
         classes: toastClass
       });
 

@@ -19,23 +19,18 @@ export class WebsocketService {
       reconnectDelay: 5000,
       debug: (str) => console.log('[WebSocket]', str),
       onConnect: () => {
-        console.log('📡 STOMP conectado');
-
         if (this.connectedUserId) {
-          const destination = `/user/${this.connectedUserId}/queue/notifications`;
-          console.log(`📡 Conectado y suscrito a: ${destination}`);
           this.subscribeToNotifications(this.connectedUserId);
         }
       },
       onStompError: (frame) => {
-        console.error('❌ STOMP error', frame);
+        console.error('STOMP error', frame);
       }
     });
   }
 
   connect(userId: number): void {
     this.connectedUserId = userId;
-
 
     if (this.stompClient.connected) {
       this.subscribeToNotifications(userId);
